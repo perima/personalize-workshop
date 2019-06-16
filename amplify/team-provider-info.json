@@ -1,0 +1,14 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "personalize-worskhop-dev-20190616075325-authRole",
+            "UnauthRoleArn": "arn:aws:iam::927378468065:role/personalize-worskhop-dev-20190616075325-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::927378468065:role/personalize-worskhop-dev-20190616075325-authRole",
+            "Region": "us-west-2",
+            "DeploymentBucketName": "personalize-worskhop-dev-20190616075325-deployment",
+            "UnauthRoleName": "personalize-worskhop-dev-20190616075325-unauthRole",
+            "StackName": "personalize-worskhop-dev-20190616075325",
+            "StackId": "arn:aws:cloudformation:us-west-2:927378468065:stack/personalize-worskhop-dev-20190616075325/d243f5e0-900b-11e9-a84a-063a4d9c7b3c"
+        }
+    }
+}
