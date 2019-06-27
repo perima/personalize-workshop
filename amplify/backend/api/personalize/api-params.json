@@ -1,0 +1,34 @@
+{
+    "paths": [
+        {
+            "name": "/items",
+            "lambdaFunction": "personalizeworskhopeaea06ed",
+            "privacy": {
+                "open": true
+            }
+        }
+    ],
+    "resourceName": "personalize",
+    "apiName": "personalize",
+    "functionArns": [
+        {
+            "lambdaFunction": "personalizeworskhopeaea06ed"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "personalize-worskhop-dev-20190616075325-authRole",
+        "unAuthRoleName": "personalize-worskhop-dev-20190616075325-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "personalizeworskhopeaea06ed",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}
