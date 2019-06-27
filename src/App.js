@@ -5,8 +5,13 @@
  * perima@ 
  * 01-June-2019
  * 
+ * Docs
+ * https://docs.aws.amazon.com/personalize/latest/dg/getting-recommendations.html
+ * https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/PersonalizeRuntime.html
+ * 
+ * 
  */ 
-import React from 'react';
+import React, { Component } from 'react';
 import logo from './AWS_logo_RGB_REV.png';
 import './personalize.css';
 
@@ -67,18 +72,19 @@ function getFile(){
 //  });
  
 
-    Papa.parse('./movies.csv', {
+    return Papa.parse('./movies.csv', {
         header: true,
         delimiter: ',',
         download: true,
-	      complete: function(results) {
-		    console.log(results);
+	      complete: (results) =>  {
+		      console.log(results);
+		      return results;
   	    }
       }); 
       
 }
 
- function App() {
+ function App2() {
   
   getFile();
   
@@ -123,5 +129,64 @@ function getFile(){
     </div>
   );
 }
+
+class App extends Component { 
+  constructor() {
+    super();
+    this.state = {
+      movies: []
+      };
+    }
+    
+  getMovies(){
+     Papa.parse('./movies.csv', {
+        header: true,
+        delimiter: ',',
+        download: true,
+        preview: 10, //use 0 for all rows
+	      complete: (results) =>  {
+		     // console.log(results);
+		      this.setState({
+		        movies: results.data
+		      });
+		      //  console.log('file', this.state);
+		         this.getMovie(1);
+  	    }
+      });
+  }
+  
+  /**
+   * 
+   * Get a movie title from movieId
+   * 
+   */ 
+  getMovie(movieId){
+   // console.log('move array length', this.state.movies.length);
+    if(this.state.movies.length > 0){
+      console.log('movies 2', this.state.movies);
+    var movie = this.state.movies.filter(function(value){
+     // console.log(value);
+      return value.ITEM_ID === '' + movieId;
+    });
+    console.log('movie', movie);      
+    }
+  }
+    
+    componentDidMount(){
+      this.getMovies();
+     
+    
+    }
+  
+    render() { 
+        return (
+            <div>
+               
+            </div>
+        );
+    }
+}
+
+//export default withAuthenticator(App, {includeGreetings: true});
 
 export default App;
