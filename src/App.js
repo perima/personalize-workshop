@@ -1,14 +1,26 @@
+/**
+ * 
+ * Amazon Personalize Workshop Demo Application
+ * sample data from movielens data
+ * perima@ 
+ * 01-June-2019
+ * 
+ */ 
 import React from 'react';
 import logo from './AWS_logo_RGB_REV.png';
 import './personalize.css';
 
-import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
-import MenuItem from '@material-ui/core/MenuItem';
+//import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 
 import Amplify, {API} from 'aws-amplify';
 import aws_exports from './aws-exports';
+import Papa from 'papaparse';
+//import fetch from 'isomorphic-fetch'
+//import txt from './movies.csv';
+//import moviescsv from './movies.csv';
+
 Amplify.configure(aws_exports);
 
 
@@ -35,18 +47,46 @@ async function getData() {
     let myInit = { // OPTIONAL
         headers: {} // OPTIONAL
     }
-    return await API.get(apiName, path, myInit);
+    return  API.get(apiName, path, myInit);
+}
+
+function getFile(){
+ // console.log(txt);
+  /*
+  fetch('/movies.csv')
+    .then((r) => r.text())
+    .then(text  => {
+      console.log(text);
+    })  
+  */
+//  var file = require('file-system');
+  //var fs = require('fs');
+  //console.log(file.readFile('./movies.csv'));
+  //const filetxt = fs.readFile("test.txt", "utf8", function(err, data) {
+//     console.log(data);
+//  });
+ 
+
+    Papa.parse('./movies.csv', {
+        header: true,
+        delimiter: ',',
+        download: true,
+	      complete: function(results) {
+		    console.log(results);
+  	    }
+      }); 
+      
 }
 
  function App() {
   
-  
+  getFile();
   
   const constdata =   getData().then(response => {
       console.log('constdata response', response);
   });
   
-  console.log('constdata', constdata);
+  //console.log('constdata', constdata);
   
   const classes = useStyles();
   const [values, setValues] = React.useState({
