@@ -46,6 +46,7 @@ app.get('/items', function(req, res) {
       numResults: '20',
       userId: '5'
     };
+    
     personalizeruntime.getRecommendations(params, function(err, data) {
       if (err) {
         console.log(err, err.stack); // an error occurred
@@ -58,19 +59,13 @@ app.get('/items', function(req, res) {
       }   
        
     });
-  
- 
-  
-  
 });
+
+
+
 
 app.get('/items/*', function(req, res) {
 
-
-
-  // Add your code here
-    
-    
   
 });
 
