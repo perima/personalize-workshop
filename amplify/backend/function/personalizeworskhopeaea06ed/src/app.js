@@ -44,7 +44,7 @@ app.get('/items', function(req, res) {
       campaignArn: 'arn:aws:personalize:us-west-2:927378468065:campaign/personalize-workshop', /* required */
 
       numResults: '20',
-      userId: '5'
+      userId: req.query['userId']
     };
     
     personalizeruntime.getRecommendations(params, function(err, data) {
@@ -55,7 +55,7 @@ app.get('/items', function(req, res) {
         
       else  {
          console.log(data);           // successful response
-          res.json({success: 'get call succeed (2)!', url: req.url, data: data});
+          res.json({success: 'get call succeed (2)!', reqquery: req.query, url: req.url, data: data});
       }   
        
     });

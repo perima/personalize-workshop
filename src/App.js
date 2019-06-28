@@ -41,7 +41,6 @@ class App extends Component {
        this.handleFetch = this.handleFetch.bind(this);
     }
     
-    
     async  getRecommendations() { 
         let apiName = 'personalize';
         let path = '/items/?userId=' + this.state.userId;
@@ -59,18 +58,6 @@ class App extends Component {
    * 
    */ 
   getMovies(){
-     Papa.parse('./movies.csv', {
-        header: true,
-        delimiter: ',',
-        download: true,
-      //  preview: 10, //use 0 for all rows
-	      complete: (results) =>  {
-		     // console.log(results);
-		      this.setState({
-		        movies: results.data
-		      });
-		      //  console.log('file', this.state);
-		      //   this.getMovie(1);
 		      this.getRecommendations().then(response => {
             console.log('recommendations response', response);
             const recommendations = []; 
@@ -91,8 +78,6 @@ class App extends Component {
                 recommendations: recommendations
               })
           });
-  	    }
-      });
   }
   
   /**
@@ -112,9 +97,16 @@ class App extends Component {
   }
     
     componentDidMount(){
-     
-     
-    
+     Papa.parse('./movies.csv', {
+        header: true,
+        delimiter: ',',
+        download: true,
+	      complete: (results) =>  {
+		      this.setState({
+		        movies: results.data
+		      });
+  	    }
+      });
     }
     
     handleFetch(){
@@ -123,7 +115,6 @@ class App extends Component {
     }
     
     handleUserChange = event => {
-     // console.log(event.target.value);
         this.setState({
           userId: event.target.value
         })
@@ -177,7 +168,5 @@ class App extends Component {
         );
     }
 }
-
-//export default withAuthenticator(App, {includeGreetings: true});
 
 export default App;
