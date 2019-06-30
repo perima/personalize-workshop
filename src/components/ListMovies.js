@@ -18,14 +18,15 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-
-
-
 export default function ListMovies(props) {
     
 
 const listItems = props.movies.map((link) => 
-        <ListItem key={link.ITEM_ID} button>
+        <ListItem 
+          key={link.ITEM_ID} 
+          button
+          onClick={() => {props.action(link.ITEM_ID, link.title)}}
+          >
           <ListItemText primary={link.title} />
         </ListItem>
         );
@@ -33,7 +34,7 @@ const listItems = props.movies.map((link) =>
 
   return (
     <div className={classes.root}>
-    {listItems}
+          {listItems}
     </div>
   );
   

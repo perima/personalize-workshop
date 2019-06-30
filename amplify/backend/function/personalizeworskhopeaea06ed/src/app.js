@@ -39,26 +39,51 @@ app.get('/items', function(req, res) {
   // Add your code here
  // res.json({success: 'get call succeed!', url: req.url});
   
-  var personalizeruntime = new AWS.PersonalizeRuntime({apiVersion: '2018-05-22'}); 
-           var params = {
-      campaignArn: 'arn:aws:personalize:us-west-2:927378468065:campaign/personalize-workshop', /* required */
-
-      numResults: '20',
-      userId: req.query['userId']
-    };
+    var personalizeruntime = new AWS.PersonalizeRuntime({apiVersion: '2018-05-22'}); 
     
-    personalizeruntime.getRecommendations(params, function(err, data) {
-      if (err) {
-        console.log(err, err.stack); // an error occurred
-         res.json({success: 'get call failed!', url: req.url, err: err, errstack: err.stack});
-      }
-        
-      else  {
-         console.log(data);           // successful response
-          res.json({success: 'get call succeed (2)!', reqquery: req.query, url: req.url, data: data});
-      }   
-       
-    });
+    const moviesWatched = JSON.parse(req.query['inputList']);
+    
+    if(moviesWatched.length > 0){ // if we got an input list we want personalized rankings
+      var params = {
+        campaignArn: 'arn:aws:personalize:us-west-2:927378468065:campaign/personalize-workshop', /* required */
+        userId: req.query['userId'],
+        inputList: moviesWatched
+      };
+      personalizeruntime.getPersonalizedRanking(params, function(err, data) {
+        if (err) {
+          console.log(err, err.stack); // an error occurred
+           res.json({success: 'get call failed!', url: req.url, err: err, errstack: err.stack});
+        }
+          
+        else  {
+           console.log(data);           // successful response
+            res.json({success: 'get call succeed (2)!', reqquery: req.query, url: req.url, data: data});
+        }   
+         
+      });      
+    }else{ // we dont have input list, we are going for recommendations
+      var params = {
+        campaignArn: 'arn:aws:personalize:us-west-2:927378468065:campaign/personalize-workshop', /* required */
+  
+        numResults: '25',
+        userId: req.query['userId']
+      };
+      personalizeruntime.getRecommendations(params, function(err, data) {
+        if (err) {
+          console.log(err, err.stack); // an error occurred
+           res.json({success: 'get call failed!', url: req.url, err: err, errstack: err.stack});
+        }
+          
+        else  {
+           console.log(data);           // successful response
+            res.json({success: 'get call succeed (2)!', reqquery: req.query, url: req.url, data: data});
+        }   
+         
+      });
+    }
+    
+    
+    
 });
 
 

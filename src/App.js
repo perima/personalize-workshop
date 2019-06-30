@@ -36,22 +36,63 @@ class App extends Component {
     super();
     this.state = {
       movies: [],
+      moviesWatched: [],
       recommendations: [],
-      userId: 1
+      recommendationsArr: [],
+      recommendationsRanked: [],
+      userId: 1,
       };
       this.handleUserChange = this.handleUserChange.bind(this);
-       this.handleFetch = this.handleFetch.bind(this);
+      this.handleFetch = this.handleFetch.bind(this);
+      this.handleMovieSelected = this.handleMovieSelected.bind(this);
     }
     
     async  getRecommendations() { 
         let apiName = 'personalize';
-        let path = '/items/?userId=' + this.state.userId;
+        let path = '/items/?userId=' + this.state.userId + '&inputList='+ JSON.stringify([]) ;
         let myInit = { // OPTIONAL
             headers: {} // OPTIONAL
         }
         return  API.get(apiName, path, myInit);
     }
 
+    async getRecommendartionsRanked(){
+      let apiName = 'personalize';
+        let path = '/items/?userId=' + this.state.userId + '&inputList=' + JSON.stringify( this.state.recommendationsArr ) ;
+        let myInit = { // OPTIONAL
+            headers: {} // OPTIONAL
+        }
+        return  API.get(apiName, path, myInit);
+    }
+
+  /**
+   * 
+   * Rank the recommendations
+   * 
+   */ 
+  getMoviesRanked(){
+     this.getRecommendartionsRanked().then(response => {
+            console.log('recommendations ranked response', response);
+              const recommendationsRanked = [];
+              response.data.itemList.forEach(
+               (item) => { 
+                  const movie = this.getMovie(item.itemId);
+                  console.log(movie);
+                  recommendationsRanked.push(
+                    {
+                      ITEM_ID: item.itemId,
+                      title: movie.title
+                    }
+                  ); 
+                }
+              );
+              //console.log(recommendations);
+              this.setState({
+                recommendationsRanked: recommendationsRanked
+              });
+              
+          });
+  }  
     
   /**
    * 
@@ -61,6 +102,7 @@ class App extends Component {
    */ 
   getMovies(){
 		      this.getRecommendations().then(response => {
+		        
             console.log('recommendations response', response);
             const recommendations = []; 
             response.data.itemList.forEach(
@@ -75,11 +117,27 @@ class App extends Component {
                   ); 
               }
               );
+              
+              const recommendationsArr = [];
+              response.data.itemList.forEach(
+               (item) => { 
+                  const movie = this.getMovie(item.itemId);
+                  console.log(movie);
+                  recommendationsArr.push(item.itemId); 
+                }
+              );
+              
               //console.log(recommendations);
               this.setState({
-                recommendations: recommendations
-              })
+                recommendations: recommendations,
+                recommendationsArr: recommendationsArr
+              });
+              
+              // get ranked
+              this.getRecommendartionsRanked();
+              console.log(this.state);
           });
+        
   }
   
   /**
@@ -124,6 +182,19 @@ class App extends Component {
     
     getButtonWithUserId(){
       return(' Get user ' + this.state.userId + ' recommendations');
+    }
+    
+    /**
+     * 
+     * Emit the event that indicates the user has watched the movie
+     * @todo
+     * 
+     */ 
+    handleMovieSelected = (movieId, title) => {
+      const moviesWatched = this.state.moviesWatched;
+      moviesWatched.push(movieId);
+      console.log('movies watched ', this.state.moviesWatched);
+    //  this.getMovies();
     }
   
     render() { 
@@ -196,7 +267,6 @@ class App extends Component {
                     Fetch
                   </Button>
               </Grid>
-            
              
             </Grid>
             
@@ -209,16 +279,16 @@ class App extends Component {
               
         </Grid>
         
-        <Grid item xs={9}  style={{ padding: 10}}>
-            <ListMovies movies={this.state.recommendations}  />
+        <Grid item xs={3}  style={{ padding: 10}}>
+            <ListMovies movies={this.state.recommendations} action={this.handleMovieSelected} />
+        </Grid>
+        
+        
+        <Grid item xs={6}  style={{ padding: 10}}>
+            <ListMovies movies={this.state.moviesWatched} action={this.handleMovieWatchedSelected} />
         </Grid>
         
       </Grid>
-        
-           
-                  
-              
-                 
            
       </Box>
 

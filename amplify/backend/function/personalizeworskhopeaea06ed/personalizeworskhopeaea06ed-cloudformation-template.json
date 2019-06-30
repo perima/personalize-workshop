@@ -63,7 +63,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "personalize-worskhop-dev-20190616075325-deployment",
-					"S3Key": "amplify-builds/personalizeworskhopeaea06ed-1561712229-latest-build.zip"
+					"S3Key": "amplify-builds/personalizeworskhopeaea06ed-1561865873-latest-build.zip"
 				}
 			}
 		},
