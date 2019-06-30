@@ -23,7 +23,9 @@ import Amplify, {API} from 'aws-amplify';
 import aws_exports from './aws-exports';
 import Papa from 'papaparse';
 import ListMovies from './components/ListMovies';
-
+import Box from '@material-ui/core/Box';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 Amplify.configure(aws_exports);
 
 
@@ -144,27 +146,84 @@ class App extends Component {
       }));
       
         return (
-            <div className="App">
-        <img src={logo} alt="logo" />
-        <p>
-          <code> Amazon Personalize Workshop</code>
-        </p>
-     <TextField
-              id="outlined-name"
-              label="User-id"
-              className={classes.textField}
-              defaultValue={this.state.userId}
-              onChange={this.handleUserChange}
-              margin="normal"
-              variant="outlined"
-            />
-             <Button variant="contained" className={classes.button} onClick={this.handleFetch}>
-              Fetch
-      </Button>
-       {this.getButtonWithUserId()}
-            <ListMovies movies={this.state.recommendations}  />
+          
+      <Box component="span" m={1}>
            
-    </div>
+      <Grid 
+        container 
+        spacing={3}
+        style={{textAlign: "center", padding: 10}}
+      >
+        
+         <Grid item>
+           
+           
+            <Grid item style={{textAlign: "center", padding: 25}}>
+             
+             <Box>
+               <img src={logo} alt="logo" />
+              </Box>    
+            
+            </Grid>
+            
+            <Grid item style={{textAlign: "center"}}>
+              <code> Amazon Personalize Workshop</code>
+            </Grid>
+            
+            <Grid container 
+                spacing={3} 
+                justify="center"
+                alignItems="center"
+                 style={{ padding: 10}}
+              >
+              
+              <Box width="25%">
+                <Grid item xs>
+                              <TextField
+                                id="outlined-name"
+                                label="User-id"
+                                className={classes.textField}
+                                defaultValue={this.state.userId}
+                                onChange={this.handleUserChange}
+                                margin="normal"
+                                variant="outlined"
+                              />
+                </Grid>
+              </Box>
+              
+              <Grid item >
+               <Button variant="contained" className={classes.button} onClick={this.handleFetch}>
+                    Fetch
+                  </Button>
+              </Grid>
+            
+             
+            </Grid>
+            
+         <Grid item xs>
+          <Box style={{ padding: 10}}>
+                         {this.getButtonWithUserId()}
+                         </Box>
+          </Grid>
+        
+              
+        </Grid>
+        
+        <Grid item xs={9}  style={{ padding: 10}}>
+            <ListMovies movies={this.state.recommendations}  />
+        </Grid>
+        
+      </Grid>
+        
+           
+                  
+              
+                 
+           
+      </Box>
+
+
+           
         );
     }
 }
