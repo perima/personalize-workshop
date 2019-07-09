@@ -30,6 +30,10 @@ app.use(function(req, res, next) {
   next()
 });
 
+// change the value below to your campaign Arn
+var campaignArn = 'arn:aws:personalize:us-west-2:927378468065:campaign/personalize-workshop';
+
+
 
 /**********************
  * Example get method *
@@ -41,18 +45,18 @@ app.get('/items', function(req, res) {
   
     var personalizeruntime = new AWS.PersonalizeRuntime({apiVersion: '2018-05-22'}); 
     
-    const moviesWatched = JSON.parse(req.query['inputList']);
-    
-    if(moviesWatched.length > 0){ // if we got an input list we want personalized rankings
+    if("inputList" in req.query === true){ // if we got an input list we want personalized rankings
+     const moviesWatchedStr = req.query['inputList'];
+      const moviesWatched = moviesWatchedStr.split(',');
       var params = {
-        campaignArn: 'arn:aws:personalize:us-west-2:927378468065:campaign/personalize-workshop', /* required */
+        campaignArn: campaignArn, /* required */
         userId: req.query['userId'],
         inputList: moviesWatched
       };
       personalizeruntime.getPersonalizedRanking(params, function(err, data) {
         if (err) {
           console.log(err, err.stack); // an error occurred
-           res.json({success: 'get call failed!', url: req.url, err: err, errstack: err.stack});
+           res.json({success: 'get call failed!', moviesWatched:moviesWatched, url: req.url, err: err, errstack: err.stack});
         }
           
         else  {
@@ -63,9 +67,7 @@ app.get('/items', function(req, res) {
       });      
     }else{ // we dont have input list, we are going for recommendations
       var params = {
-        campaignArn: 'arn:aws:personalize:us-west-2:927378468065:campaign/personalize-workshop', /* required */
-  
-        numResults: '25',
+        campaignArn: campaignArn, /* required */
         userId: req.query['userId']
       };
       personalizeruntime.getRecommendations(params, function(err, data) {

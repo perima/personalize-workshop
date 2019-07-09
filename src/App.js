@@ -26,6 +26,8 @@ import ListMovies from './components/ListMovies';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
+import axios from 'axios';
+
 Amplify.configure(aws_exports);
 
 
@@ -45,11 +47,13 @@ class App extends Component {
       this.handleUserChange = this.handleUserChange.bind(this);
       this.handleFetch = this.handleFetch.bind(this);
       this.handleMovieSelected = this.handleMovieSelected.bind(this);
+      this.getMoviesPreDeployedEndPoint = this.getMoviesPreDeployedEndPoint.bind(this);
     }
     
     async  getRecommendations() { 
+      const recom = [];
         let apiName = 'personalize';
-        let path = '/items/?userId=' + this.state.userId + '&inputList='+ JSON.stringify([]) ;
+        let path = '/items/?userId=' + this.state.userId;
         let myInit = { // OPTIONAL
             headers: {} // OPTIONAL
         }
@@ -57,8 +61,9 @@ class App extends Component {
     }
 
     async getRecommendartionsRanked(){
+        console.log('recommendations arr call','/items/?userId=' + this.state.userId + '&inputList=' + this.state.recommendationsArr.join(",")   );
       let apiName = 'personalize';
-        let path = '/items/?userId=' + this.state.userId + '&inputList=' + JSON.stringify( this.state.recommendationsArr ) ;
+        let path = '/items/?userId=' + this.state.userId + '&inputList=' +  this.state.recommendationsArr.join ;
         let myInit = { // OPTIONAL
             headers: {} // OPTIONAL
         }
@@ -67,7 +72,8 @@ class App extends Component {
 
   /**
    * 
-   * Rank the recommendations
+   * Rank the recommendations 
+   * not working yet this is a @todo item
    * 
    */ 
   getMoviesRanked(){
@@ -96,8 +102,12 @@ class App extends Component {
     
   /**
    * 
-   * Load the  local movies  file  into state
-   * so that we can convert movie id to title
+   * Fetch recommendations from our deployed
+   * campaign and replace ids with titles
+   * 
+   * This will not work unless you edit the 
+   * lambda function as per workshop 
+   * documentation
    * 
    */ 
   getMovies(){
@@ -136,8 +146,65 @@ class App extends Component {
               // get ranked
               this.getRecommendartionsRanked();
               console.log(this.state);
+          }).then(() => {
+           // this.getMoviesRanked(); //@todo add ranked results for a user
           });
-        
+  }
+  
+  /**
+   * 
+   * 
+   * Fetch recommendations  from our pre-deployed 
+   * campaign and replace ids with titles
+   * 
+   * This is using existing workshop demonstration
+   * endpoint trained using same dataset.
+   * 
+   */
+  getMoviesPreDeployedEndPoint(){
+    const url = 'https://1347dfqxnc.execute-api.us-west-2.amazonaws.com/dev/items/?userId=' + this.state.userId;
+    axios.get(url).then(response => response.data)
+    .then((payload) => {
+      
+      console.log('pre-deployed endpoint response', JSON.stringify(payload, null, 2));
+      
+     //console.log('recommendations response', data, null, 2);
+     
+            const recommendations = []; 
+            payload.data.itemList.forEach(
+               (item) => { 
+                const movie = this.getMovie(item.itemId);
+                console.log(movie);
+                recommendations.push(
+                    {
+                      ITEM_ID: item.itemId,
+                      title: movie.title
+                    }
+                  ); 
+              }
+              );
+              
+              const recommendationsArr = [];
+             payload.data.itemList.forEach(
+               (item) => { 
+                  const movie = this.getMovie(item.itemId);
+                  console.log(movie);
+                  recommendationsArr.push(item.itemId); 
+                }
+              );
+              
+              //console.log(recommendations);
+              this.setState({
+                recommendations: recommendations,
+                recommendationsArr: recommendationsArr
+              });
+              
+              // get ranked
+              this.getRecommendartionsRanked();
+              console.log(this.state);
+              
+              
+     })
   }
   
   /**
@@ -156,6 +223,11 @@ class App extends Component {
     }
   }
     
+  /*  
+   * Load the  local movies  file  into state
+   * so that we can convert movie id to title    
+   *
+   */
     componentDidMount(){
      Papa.parse('./movies.csv', {
         header: true,
@@ -169,19 +241,32 @@ class App extends Component {
       });
     }
     
+    
+    /**
+     * 
+     * Fetch recommendations and rank them
+     * 
+     * 
+     */ 
     handleFetch(){
       console.log('fetching recommendations');
-       this.getMovies();
+      this.getMovies(); // get recommendations
+      // this.getMoviesRanked(); // rank them to the user
     }
     
+    /**
+     * 
+     * Update state with the user entered in the control
+     * 
+     */  
     handleUserChange = event => {
         this.setState({
           userId: event.target.value
-        })
+        });
     }
     
     getButtonWithUserId(){
-      return(' Get user ' + this.state.userId + ' recommendations');
+      return(' recommendations for user id ' + this.state.userId );
     }
     
     /**
@@ -199,6 +284,9 @@ class App extends Component {
   
     render() { 
       const classes = makeStyles(theme => ({
+        input: {
+          color: "white"
+        },
         container: {
           display: 'flex',
           flexWrap: 'wrap',
@@ -206,6 +294,7 @@ class App extends Component {
         textField: {
           marginLeft: theme.spacing(1),
           marginRight: theme.spacing(1),
+          color: 'white'
           
         },
         dense: {
@@ -216,17 +305,18 @@ class App extends Component {
         },
       }));
       
+
         return (
           
       <Box component="span" m={1}>
            
       <Grid 
         container 
-        spacing={3}
+        spacing={4}
         style={{textAlign: "center", padding: 10}}
       >
         
-         <Grid item>
+         <Grid item xs={3}>
            
            
             <Grid item style={{textAlign: "center", padding: 25}}>
@@ -237,8 +327,8 @@ class App extends Component {
             
             </Grid>
             
-            <Grid item style={{textAlign: "center"}}>
-              <code> Amazon Personalize Workshop</code>
+            <Grid item style={{textAlign: "center", color: "white"}}>
+              <code>Amazon Personalize Workshop</code>
             </Grid>
             
             <Grid container 
@@ -249,7 +339,7 @@ class App extends Component {
               >
               
               <Box width="25%">
-                <Grid item xs>
+                <Grid item xs >
                               <TextField
                                 id="outlined-name"
                                 label="User-id"
@@ -262,16 +352,23 @@ class App extends Component {
                 </Grid>
               </Box>
               
-              <Grid item >
+              <Grid item  >
                <Button variant="contained" className={classes.button} onClick={this.handleFetch}>
                     Fetch
                   </Button>
+                  
+              </Grid>
+              <Grid item  >
+               <Button variant="contained" className={classes.button} onClick={this.getMoviesPreDeployedEndPoint}>
+                    Fetch pretrained
+                  </Button>
+                  
               </Grid>
              
             </Grid>
             
          <Grid item xs>
-          <Box style={{ padding: 10}}>
+          <Box style={{ padding: 10, color: "white"}}>
                          {this.getButtonWithUserId()}
                          </Box>
           </Grid>
@@ -279,14 +376,11 @@ class App extends Component {
               
         </Grid>
         
-        <Grid item xs={3}  style={{ padding: 10}}>
+        <Grid item xs={8} style={{ padding: 10}}>
             <ListMovies movies={this.state.recommendations} action={this.handleMovieSelected} />
         </Grid>
         
-        
-        <Grid item xs={6}  style={{ padding: 10}}>
-            <ListMovies movies={this.state.moviesWatched} action={this.handleMovieWatchedSelected} />
-        </Grid>
+
         
       </Grid>
            
