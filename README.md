@@ -1,14 +1,13 @@
----
 Amazon Personalize Workshop
----
+======
 
 ![alt text](workshop-images/aws-logo.png)
 
 
 # 1. Setup S3
+------
 
 ## 1.1 Create bucket S3 
-------
 Please note we are using us-west-2 region (Oregon) for this workshop.
 
 For this workshop we will need to setup a bucket we will use for
@@ -19,7 +18,6 @@ a new bucket to be used for this workshop.
 Keep the bucket name handy as we will need it in a few places.
 
 ## 1.2 Setup bucket policy
-------
 Go to S3 console, select the bucket you created earlier for this
 workshop and select properties-\>permissions. Then select the bucket
 policy button and copy the policy below and click **save**.
@@ -51,8 +49,6 @@ for this workshop.
 ```
 
 # 2. Setup your development environment
-------
-
 We will be using Cloud9 for this workshop. Go to the Cloud9 console and
 create a new environment:
 
@@ -79,8 +75,6 @@ Select following settings and press next
   ---------------------------------------------------------------------------------------- ---------------------------------------------------------------------------------
 
 # 3. Get sample data files and demo app
-------
-
 On the top of the screen click the plus sign to open a new terminal
 
 ![alt text](workshop-images/3a.png)
@@ -132,8 +126,6 @@ END
 ```
 
 # 4. Create the dataset 
-===================
-
 In a separate browser tab, go to the Amazon Personalize homepage
 (<https://us-west-2.console.aws.amazon.com/personalize/home?region=us-west-2#start>)
 and click the get started button.
@@ -141,7 +133,6 @@ and click the get started button.
 ![alt text](workshop-images/4a.png)
 
 ## 4.1 Create dataset group
-
 Set the dataset group name to ***personalize-workshop*** and click
 **Next**.
 
@@ -189,8 +180,6 @@ Set the schema definition to the following
 Click **next**.
 
 ## 4.2 Create user-item interaction dataset & import
----------------------------------------------
-
 Set the dataset import job name to
 **personalize-workshop-interactions***.*
 
@@ -218,11 +207,8 @@ user-item interactions as per screenshot below.
 ![alt text](workshop-images/4i.png)
 
 # 5. Setup Item dataset
------
 
 ## 5.1 Configure Item schema
-------
-
   ------------------------------------------------------------------------------- ------------------------------------------------------------------------------------
   Click the **Import** button next to Item data at the bottom of the dashboard.   ![](media/image15.png){width="1.8260870516185477in" height="0.3679429133858268in"}
   ------------------------------------------------------------------------------- ------------------------------------------------------------------------------------
@@ -269,8 +255,6 @@ Copy and paste the following schema to the schema definition input
 Press **Next**.
 
 ## 5.2 Configure movies dataset import job details
--------------------------------------------
-
 Set **personalize-workshop-movies-import** as the name for the import
 job.
 
@@ -290,8 +274,6 @@ Press **Start import**.
   ----------------------------------------------------------------------------------------- ------------------------------------------------------------------------------------
 
 # 6. Tracker solution
-------
-
 +-----------------------------------+-----------------------------------+
 | Whilst we wait for our imports to | ![alt text](workshop-images/6.png) |
 | complete, we will setup our       |               |
@@ -325,8 +307,6 @@ minutes). Wait for [**both** **imports**]{.underline} to show as active
 **[before]{.underline}** proceeding to next step.
 
 # 7. Create Solution
-===============
-
 Once your user-item interaction and Item data have finished creating
 (importing), It's time to setup our first solution. From your dashboard
 select create solution. Please note that your dataset imports must have
@@ -352,13 +332,11 @@ will get an error if your dataset imports haven't finished).
 Please note this step can take 30 to 45 minutes to complete.
 
 # 8 Test our campaign using the single page demo app 
-=================================================
 
 ## 8.1 Configure amplify project
--------------------------
 
 Go to the root of your working directory (something like
-\~/environment/personalize-workshop) and execute
+~/environment/personalize-workshop) and execute
 
 ```sh
 amplify init
@@ -383,8 +361,6 @@ npm install --save
 ```
 
 ## 8.2 Run the app in preview
-------
-
 Using the terminal execute
 
 ```sh
@@ -410,8 +386,6 @@ Once your new preview tab is open you can close the preview tab inside
 the cloud9 to have more space for your IDE.
 
 ## 8.3 Test using the pre-deployed personalize campaign
-------
-
 Whilst we wait for the training to complete we will test first using a
 campaign we deployed earlier using the same dataset.
 
@@ -427,8 +401,7 @@ press the fetch pretrained.
 
 ![alt text](workshop-images/8e.png)
 
-#9 Create Campaign
------
+# 9. Create Campaign
 
 +-----------------------------------+-----------------------------------+
 | Once your solution creation is    | ![alt text](workshop-images/9a.png) |
@@ -475,9 +448,7 @@ You should see a list of recommended movie IDs
 
 ![alt text](workshop-images/9f.png)
 
-Configure your campaign details in your single page application
----------------------------------------------------------------
-
+## 9.1 Configure your campaign details in your single page application
 Once your campaign is active, go back to your Cloud9 IDE and to edit
 file
 
@@ -501,8 +472,8 @@ and answer yes when asked if you are sure if you want to continue. This
 will deploy an API gateway endpoint and the lambda function you edited.
 Your lambda function will be connecting to the Personalize campaign.
 
-Get recommendations
--------------------
+## 9.2 Get recommendations
+
 
 Once your Amplify backend has been deployed, you can get recommendations
 from your own campaign by entering a user ID and pressing the FETCH
@@ -510,9 +481,7 @@ button. Results will appear on the right.
 
 ![alt text](workshop-images/9j.png)
 
-Clean-up
-========
-
+# 10. Clean-up
 Time to clean up by removing the resources of our workshop.
 
 In your cloud9 environment using the terminal run **amplify env remove
@@ -525,7 +494,7 @@ Delete your S3 bucket.
 
 Stop and delete your cloud9 environment
 
-Appendix 1
+# Appendix 1
 ==========
 
 Create a new policy with the statement below and attach to your role.
