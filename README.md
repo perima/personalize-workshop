@@ -2,8 +2,7 @@
 Amazon Personalize Workshop
 ---
 
-@todo logo ![](media/image1.png){width="0.6944444444444444in"
-height="0.4166666666666667in"}
+![alt text](workshop-images/aws-logo.png)
 
 [1 Setup S3 3](#setup-s3)
 
@@ -193,7 +192,7 @@ region=us-west-2
 END
 ```
 
-#4 Create the dataset 
+# 4. Create the dataset 
 ===================
 
 In a separate browser tab, go to the Amazon Personalize homepage
