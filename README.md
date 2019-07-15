@@ -299,8 +299,8 @@ Your dashboard should now reflect your event tracker is active.
 ![alt text](workshop-images/6c.png)
 
 Please note this step will take a few minutes to complete (\~15
-minutes). Wait for [**both** **imports**]{.underline} to show as active
-**[before]{.underline}** proceeding to next step.
+minutes). Wait for **both** **imports** to show as active
+**before** proceeding to next step.
 
 # 7. Create Solution
 Once your user-item interaction and Item data have finished creating
