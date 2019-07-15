@@ -270,9 +270,9 @@ your-s3-bucket with your actual bucket name).
 
 Press **Start import**.
 
-  ----------------------------------------------------------------------------------------- ------------------------------------------------------------------------------------
-  You should be redirected to the dashboard and see that your item import is now running.   ![alt text](workshop-images/5e.png)
-  ----------------------------------------------------------------------------------------- ------------------------------------------------------------------------------------
+You should be redirected to the dashboard and see that your item import is now running.
+
+![alt text](workshop-images/5e.png)
 
 # 6. Tracker solution
 Whilst we wait for our imports to complete, we will setup our solution to ingest events from our single page application. 
