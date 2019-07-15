@@ -2,65 +2,7 @@
 Amazon Personalize Workshop
 ---
 
-![alt text](workshop-images/aws-logo.png)
 
-[1 Setup S3 3](#setup-s3)
-
-[1.1.1 Create bucket S3 3](#create-bucket-s3)
-
-[1.2 Setup bucket policy 3](#setup-bucket-policy)
-
-[2 Setup your development environment
-4](#setup-your-development-environment)
-
-[3 Get sample data files and demo app
-7](#get-sample-data-files-and-demo-app)
-
-[4 Create the dataset 9](#create-the-dataset)
-
-[4.1.1 Create dataset group 9](#create-dataset-group)
-
-[4.2 Create user-item interaction dataset & import
-10](#create-user-item-interaction-dataset-import)
-
-[5 Setup Item dataset 13](#setup-item-dataset)
-
-[5.1 Configure Item schema 13](#configure-item-schema)
-
-[5.2 Configure dataset import job details
-15](#configure-movies-dataset-import-job-details)
-
-[6 Tracker solution 16](#tracker-solution)
-
-[7 Create Solution 18](#create-solution)
-
-[8 Test our campaign using the single page demo app
-20](#test-our-campaign-using-the-single-page-demo-app)
-
-[8.1 Configure amplify project 20](#configure-amplify-project)
-
-[8.2 Run the app in preview 20](#run-the-app-in-preview)
-
-[8.3 Test using pre-deployed personalize campaign
-22](#test-using-pre-deployed-personalize-campaign)
-
-[9 Create Campaign 23](#create-campaign)
-
-[9.1 Configure your campaign details in your single page application
-27](#configure-your-campaign-details-in-your-single-page-application)
-
-[9.2 Get recommendations 28](#get-recommendations)
-
-[10 Clean-up 29](#clean-up)
-
-[11 Appendix 1 30](#appendix-1)
-
-[11.1 Create a new policy with the statement below and attach to your
-role.
-30](#create-a-new-policy-with-the-statement-below-and-attach-to-your-role.)
-
-[11.2 Attach AmazonPersonalizeFullAccess policy
-30](#attach-amazonpersonalizefullaccess-policy)
 
 
 # 1. Setup S3
