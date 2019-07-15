@@ -138,26 +138,22 @@ In a separate browser tab, go to the Amazon Personalize homepage
 (<https://us-west-2.console.aws.amazon.com/personalize/home?region=us-west-2#start>)
 and click the get started button.
 
-![](media/image6.png){width="5.026087051618548in"
-height="1.2576367016622922in"}
+![alt text](workshop-images/4a.png)
 
 ## 4.1 Create dataset group
 
 Set the dataset group name to ***personalize-workshop*** and click
 **Next**.
 
-![](media/image7.png){width="5.060870516185477in"
-height="2.0181758530183727in"}
+![alt text](workshop-images/4b.png)
 
 Set the dataset name to ***ratings***
 
-![](media/image8.png){width="5.278261154855643in"
-height="1.5214501312335957in"}
+![alt text](workshop-images/4c.png)
 
 Select **Create new schema**
 
-![](media/image9.png){width="6.263888888888889in"
-height="1.0798611111111112in"}
+![alt text](workshop-images/4d.png)
 
 Set the schema name to **ratings-schema**
 
@@ -198,32 +194,28 @@ Click **next**.
 Set the dataset import job name to
 **personalize-workshop-interactions***.*
 
-![](media/image10.png){width="6.263888888888889in" height="1.0625in"}
+![alt text](workshop-images/4e.png)
 
 Select **create a new role** from the IAM service role dropdown
 
-![](media/image11.png){width="6.263888888888889in"
-height="1.7006944444444445in"}
+![alt text](workshop-images/4f.png)
 
 Select **Any S3 bucket** from the options and press **Create role**.
 
-![](media/image12.png){width="6.263888888888889in"
-height="3.797222222222222in"}
+![alt text](workshop-images/4g.png)
 
 Set the S3 location to **s3://your-s3-bucket/imports/ratings.csv**
 (don't forget to replace your-s3-bucket to the name of the bucket you
 setup in the setup part of this workshop).
 
-![](media/image13.png){width="6.263888888888889in"
-height="0.9513888888888888in"}
+![alt text](workshop-images/4h.png)
 
 Press **Finish**.
 
 The personalize dashboard should reflect that your import is running for
 user-item interactions as per screenshot below.
 
-![](media/image14.png){width="6.263888888888889in"
-height="3.7465277777777777in"}
+![alt text](workshop-images/4i.png)
 
 # 5. Setup Item dataset
 -----
@@ -237,16 +229,15 @@ height="3.7465277777777777in"}
 
 Set the dataset name to **movies-dataset**.
 
-![](media/image16.png){width="6.263888888888889in"
-height="1.7243055555555555in"}
+![alt text](workshop-images/5a.png)
 
 Select **Create new schema**
 
-![](media/image17.png){width="6.263888888888889in" height="1.06875in"}
+![alt text](workshop-images/5b.png)
 
 Set the schema name **movies-schema**.
 
-![](media/image18.png){width="6.263888888888889in" height="1.05625in"}
+![alt text](workshop-images/5c.png)
 
 Copy and paste the following schema to the schema definition input
 
@@ -290,22 +281,21 @@ Input your S3 bucket details which should be something like
 s3://**your-s3-bucket**/imports/movies.csv (don't forget to replace
 your-s3-bucket with your actual bucket name).
 
-![](media/image19.png){width="4.720612423447069in"
-height="4.182609361329834in"}
+![alt text](workshop-images/5d.png)
 
 Press **Start import**.
 
   ----------------------------------------------------------------------------------------- ------------------------------------------------------------------------------------
-  You should be redirected to the dashboard and see that your item import is now running.   ![](media/image20.png){width="1.5049792213473316in" height="1.7739129483814524in"}
+  You should be redirected to the dashboard and see that your item import is now running.   ![alt text](workshop-images/5e.png)
   ----------------------------------------------------------------------------------------- ------------------------------------------------------------------------------------
 
 # 6. Tracker solution
 ------
 
 +-----------------------------------+-----------------------------------+
-| Whilst we wait for our imports to | ![](media/image21.png){width="2.0 |
-| complete, we will setup our       | 173917322834645in"                |
-| solution to ingest events from    | height="3.3391305774278215in"}    |
+| Whilst we wait for our imports to | ![alt text](workshop-images/6.png) |
+| complete, we will setup our       |               |
+| solution to ingest events from    |    |
 | our single page application.      |                                   |
 |                                   |                                   |
 | For this you need to select the   |                                   |
@@ -316,11 +306,10 @@ Press **Start import**.
 Set **personalize-workshop-tracker** as the tracker name and press
 **Next**
 
-![](media/image22.png){width="6.263888888888889in"
-height="2.9291666666666667in"}
+![alt text](workshop-images/6a.png)
 
 +-----------------------------------+-----------------------------------+
-| In the next page you will see the | ![](media/image23.png){width="2.8 |
+| In the next page you will see the | ![alt text](workshop-images/6b.png) |
 | details of the tracker created    | in"                               |
 | for you.                          | height="2.635166229221347in"}     |
 |                                   |                                   |
@@ -328,7 +317,7 @@ height="2.9291666666666667in"}
 +-----------------------------------+-----------------------------------+
 
   ----------------------------------------------------------------- ------------------------------------------------------------------------------------
-  Your dashboard should now reflect your event tracker is active.   ![](media/image24.png){width="1.8020745844269466in" height="2.3826082677165354in"}
+  Your dashboard should now reflect your event tracker is active.   ![alt text](workshop-images/6c.png)
   ----------------------------------------------------------------- ------------------------------------------------------------------------------------
 
 Please note this step will take a few minutes to complete (\~15
@@ -347,18 +336,17 @@ Use **personalize-workshop-solution** as the solution name.
 
 Select **Automatic (AutoML)** from the recipe selection options.
 
-![](media/image25.png){width="6.263888888888889in" height="6.36875in"}
+![alt text](workshop-images/7a.png)
 
 Press **Next**.
 
 Press **Finish** in the Create Solution version screen (please note you
 will get an error if your dataset imports haven't finished).
 
-![](media/image26.png){width="6.263888888888889in"
-height="4.308333333333334in"}
+![alt text](workshop-images/7b.png)
 
   --------------------------------------------------------------------------------------------------------------------- ----------------------------------------------------------------------------------
-  You should now be redirected to the dashboard, which should reflect that your solution creation is now in progress.   ![](media/image27.png){width="1.521738845144357in" height="2.586956474190726in"}
+  You should now be redirected to the dashboard, which should reflect that your solution creation is now in progress.   ![alt text](workshop-images/7c.png)
   --------------------------------------------------------------------------------------------------------------------- ----------------------------------------------------------------------------------
 
 Please note this step can take 30 to 45 minutes to complete.
@@ -406,18 +394,17 @@ npm start
 Once the build has completed, select Preview-\>Preview Running
 Application from the cloud9 top menu.
 
-![](media/image28.png){width="4.791666666666667in"
-height="2.4166666666666665in"}
+![alt text](workshop-images/8a.png)
 
 You should now see a preview window with your app
 
-![](media/image29.png){width="5.25in" height="4.986111111111111in"}
+![alt text](workshop-images/8b.png)
 
 At the top right of your preview click the icon
-![](media/image30.png){width="0.2in" height="0.16in"} to preview the app
+![alt text](workshop-images/8c.png)to preview the app
 in a separate browser tab.
 
-![](media/image31.png){width="2.5in" height="2.9444444444444446in"}
+![alt text](workshop-images/8d.png)
 
 Once your new preview tab is open you can close the preview tab inside
 the cloud9 to have more space for your IDE.
@@ -431,22 +418,20 @@ campaign we deployed earlier using the same dataset.
 Press the Fetch pretrained button on the left. Feel free to change the
 user id to see different recommendations.
 
-![](media/image32.png){width="4.111111111111111in"
-height="2.7777777777777777in"}
+![alt text](workshop-images/8ee.png)
 
 Our single page application is calling a public rest endpoint from a
 previously deployed version of the workshop which was also trained with
 the same dataset. You should see recommendations listed every time you
 press the fetch pretrained.
 
-![](media/image33.png){width="6.263888888888889in"
-height="3.9138888888888888in"}
+![alt text](workshop-images/8e.png)
 
 #9 Create Campaign
 -----
 
 +-----------------------------------+-----------------------------------+
-| Once your solution creation is    | ![](media/image34.png){width="1.7 |
+| Once your solution creation is    | ![alt text](workshop-images/9a.png) |
 | active you are ready to create a  | 043482064741908in"                |
 | campaign so that your application | height="2.6229625984251967in"}    |
 | can get recommendations.          |                                   |
@@ -466,18 +451,15 @@ Leave the minimum provisioned transactions per second to 1.
 
 Click **create campaign**
 
-![](media/image35.png){width="6.263888888888889in"
-height="4.570833333333334in"}
+![alt text](workshop-images/9b.png)
 
 You should now see your new campaign.
 
-![](media/image36.png){width="6.263888888888889in"
-height="1.770138888888889in"}
+![alt text](workshop-images/9c.png)
 
 You can check the campaign status by selecting the details tab.
 
-![](media/image37.png){width="6.263888888888889in"
-height="1.6791666666666667in"}
+![alt text](workshop-images/9d.png)
 
 You can start using it once the status shows as active. This step can
 take five to ten minutes.
@@ -485,15 +467,13 @@ take five to ten minutes.
 Once the campaign shows as active, go back to the campaign homepage to
 test it.
 
-![](media/image38.png){width="6.263888888888889in"
-height="1.4409722222222223in"}
+![alt text](workshop-images/9e.png)
 
 Input a user id (example 5) and click the Get Recommendations button.
 
 You should see a list of recommended movie IDs
 
-![](media/image39.png){width="6.263888888888889in"
-height="5.197222222222222in"}
+![alt text](workshop-images/9f.png)
 
 Configure your campaign details in your single page application
 ---------------------------------------------------------------
@@ -503,13 +483,12 @@ file
 
 **/amplify/backend/function/personalizeworskhopeaea06ed/src/app.js**
 
-![](media/image40.png){width="3.5757950568678916in"
-height="2.460870516185477in"}
+![alt text](workshop-images/9h.png)
 
 Change the value of campaignArn to the arn of your campaign in
 personalize.
 
-![](media/image41.png){width="6.263888888888889in" height="0.39375in"}
+![alt text](workshop-images/9i.png)
 
 We now need to deploy our amplify backend. In the Cloud9 terminal
 execute
@@ -529,7 +508,7 @@ Once your Amplify backend has been deployed, you can get recommendations
 from your own campaign by entering a user ID and pressing the FETCH
 button. Results will appear on the right.
 
-![](media/image42.png){width="3.040625546806649in" height="2.8in"}
+![alt text](workshop-images/9j.png)
 
 Clean-up
 ========
@@ -587,5 +566,4 @@ S3 policy for personalize in case automatic role creation fails
 Attach [AmazonPersonalizeFullAccess](https://console.aws.amazon.com/iam/home?region=us-west-2#/policies/arn%3Aaws%3Aiam%3A%3Aaws%3Apolicy%2Fservice-role%2FAmazonPersonalizeFullAccess) policy
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-![](media/image43.png){width="6.083333333333333in"
-height="1.2222222222222223in"}
+![alt text](workshop-images/11a.png)
