@@ -294,9 +294,9 @@ Click the **Finish** button.
 
 ![alt text](workshop-images/6b.png) 
 
-  ----------------------------------------------------------------- ------------------------------------------------------------------------------------
-  Your dashboard should now reflect your event tracker is active.   ![alt text](workshop-images/6c.png)
-  ----------------------------------------------------------------- ------------------------------------------------------------------------------------
+Your dashboard should now reflect your event tracker is active.   
+  
+![alt text](workshop-images/6c.png)
 
 Please note this step will take a few minutes to complete (\~15
 minutes). Wait for [**both** **imports**]{.underline} to show as active
@@ -321,9 +321,9 @@ will get an error if your dataset imports haven't finished).
 
 ![alt text](workshop-images/7b.png)
 
-  --------------------------------------------------------------------------------------------------------------------- ----------------------------------------------------------------------------------
-  You should now be redirected to the dashboard, which should reflect that your solution creation is now in progress.   ![alt text](workshop-images/7c.png)
-  --------------------------------------------------------------------------------------------------------------------- ----------------------------------------------------------------------------------
+You should now be redirected to the dashboard, which should reflect that your solution creation is now in progress.   
+
+![alt text](workshop-images/7c.png)
 
 Please note this step can take 30 to 45 minutes to complete.
 
