@@ -485,12 +485,9 @@ Delete your S3 bucket.
 Stop and delete your cloud9 environment
 
 # Appendix 1
-==========
-
 Create a new policy with the statement below and attach to your role.
----------------------------------------------------------------------
 
-This step is only required if you encounter a problem creating a new
+This step is **only required** if you encounter a problem creating a new
 role in the personalize console.
 
 S3 policy for personalize in case automatic role creation fails
