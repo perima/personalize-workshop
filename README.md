@@ -325,7 +325,7 @@ You should now be redirected to the dashboard, which should reflect that your so
 
 ![alt text](workshop-images/7c.png)
 
-Please note this step can take 30 to 45 minutes to complete.
+Please note this step can take 30 to 45 minutes to complete. Proceed to next step whilst this step is processing in the background.
 
 # 8 Test our campaign using the single page demo app 
 
@@ -372,9 +372,7 @@ You should now see a preview window with your app
 
 ![alt text](workshop-images/8b.png)
 
-At the top right of your preview click the icon
-![alt text](workshop-images/8c.png)to preview the app
-in a separate browser tab.
+At the top right of your preview click the icon ![alt text](workshop-images/8dd.png) to preview the app in a separate browser tab.
 
 ![alt text](workshop-images/8d.png)
 
