@@ -2,7 +2,7 @@
 Amazon Personalize Workshop
 ---
 
-
+![alt text](workshop-images/aws-logo.png)
 
 
 # 1. Setup S3
@@ -60,8 +60,7 @@ create a new environment:
 
 Name the environment **personalize-workshop**
 
-![](media/image2.png){width="4.737268153980753in"
-height="3.4347823709536307in"}
+![alt text](workshop-images/2.png)
 
 Select following settings and press next
 
@@ -73,11 +72,10 @@ Select following settings and press next
 
 -   Cost-saving setting leave **After 30 minutes (default)**
 
-![](media/image3.png){width="4.436005030621172in"
-height="4.721738845144357in"}
+![alt text](workshop-images/2a.png)
 
   ---------------------------------------------------------------------------------------- ---------------------------------------------------------------------------------
-  Press **Create environment** and wait for your new environment to be available to use.   ![](media/image4.png){width="4.200996281714786in" height="4.513043525809274in"}
+  Press **Create environment** and wait for your new environment to be available to use.   ![alt text](workshop-images/2b.png)
   ---------------------------------------------------------------------------------------- ---------------------------------------------------------------------------------
 
 # 3. Get sample data files and demo app
@@ -85,8 +83,7 @@ height="4.721738845144357in"}
 
 On the top of the screen click the plus sign to open a new terminal
 
-![](media/image5.png){width="6.263888888888889in"
-height="2.5055555555555555in"}
+![alt text](workshop-images/2bbb.png)
 
 Using the terminal get the project files
 
