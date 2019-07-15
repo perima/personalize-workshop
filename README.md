@@ -72,10 +72,10 @@ Select following settings and press next
 
 -   Cost-saving setting leave **After 30 minutes (default)**
 
-![alt text](workshop-images/2a.png)
+![alt text](workshop-images/2b.png)
 
   ---------------------------------------------------------------------------------------- ---------------------------------------------------------------------------------
-  Press **Create environment** and wait for your new environment to be available to use.   ![alt text](workshop-images/2b.png)
+  Press **Create environment** and wait for your new environment to be available to use.   ![alt text](workshop-images/2c.png)
   ---------------------------------------------------------------------------------------- ---------------------------------------------------------------------------------
 
 # 3. Get sample data files and demo app
@@ -83,7 +83,7 @@ Select following settings and press next
 
 On the top of the screen click the plus sign to open a new terminal
 
-![alt text](workshop-images/2bbb.png)
+![alt text](workshop-images/3a.png)
 
 Using the terminal get the project files
 
