@@ -70,9 +70,9 @@ Select following settings and press next
 
 ![alt text](workshop-images/2b.png)
 
-  ---------------------------------------------------------------------------------------- ---------------------------------------------------------------------------------
-  Press **Create environment** and wait for your new environment to be available to use.   ![alt text](workshop-images/2c.png)
-  ---------------------------------------------------------------------------------------- ---------------------------------------------------------------------------------
+Press **Create environment** and wait for your new environment to be available to use.   
+
+![alt text](workshop-images/2c.png)
 
 # 3. Get sample data files and demo app
 On the top of the screen click the plus sign to open a new terminal
@@ -91,11 +91,11 @@ Change folder to the workshop folder
 cd personalize-workshop
 ```
 
-Copy the sample data files to the s3 bucket (you must change the details
+Copy the sample data files to the s3 bucket (you **must** change the details
 below to use the bucket you created earlier)
 
 ```sh
-aws s3 cp ./sample-data/ s3://**your-s3-bucket**/imports \--recursive
+aws s3 cp ./sample-data/ s3://**your-s3-bucket**/imports --recursive
 ```
 
 update the AWS CLI
@@ -113,7 +113,7 @@ nvm install v8.11.0 nvm alias default v8.11.0
 install the AWS Amplify CLI
 
 ```sh
-npm install -g \@aws-amplify/cli
+npm install -g @aws-amplify/cli
 ```
 
 configure default region for the CLI
@@ -209,9 +209,10 @@ user-item interactions as per screenshot below.
 # 5. Setup Item dataset
 
 ## 5.1 Configure Item schema
-  ------------------------------------------------------------------------------- ------------------------------------------------------------------------------------
-  Click the **Import** button next to Item data at the bottom of the dashboard.   ![](media/image15.png){width="1.8260870516185477in" height="0.3679429133858268in"}
-  ------------------------------------------------------------------------------- ------------------------------------------------------------------------------------
+  
+Click the **Import** button next to Item data at the bottom of the dashboard.   
+
+![alt text](workshop-images/51a.png)
 
 Set the dataset name to **movies-dataset**.
 
@@ -274,29 +275,24 @@ Press **Start import**.
   ----------------------------------------------------------------------------------------- ------------------------------------------------------------------------------------
 
 # 6. Tracker solution
-+-----------------------------------+-----------------------------------+
-| Whilst we wait for our imports to | ![alt text](workshop-images/6.png) |
-| complete, we will setup our       |               |
-| solution to ingest events from    |    |
-| our single page application.      |                                   |
-|                                   |                                   |
-| For this you need to select the   |                                   |
-| SDK installation from the         |                                   |
-| dashboard.                        |                                   |
-+-----------------------------------+-----------------------------------+
+Whilst we wait for our imports to complete, we will setup our solution to ingest events from our single page application. 
+
+For this you need to select the SDK installation from the dashboard.
+
+![alt text](workshop-images/6.png)
 
 Set **personalize-workshop-tracker** as the tracker name and press
 **Next**
 
 ![alt text](workshop-images/6a.png)
 
-+-----------------------------------+-----------------------------------+
-| In the next page you will see the | ![alt text](workshop-images/6b.png) |
-| details of the tracker created    | in"                               |
-| for you.                          | height="2.635166229221347in"}     |
-|                                   |                                   |
-| Click the **Finish** button.      |                                   |
-+-----------------------------------+-----------------------------------+
+In the next page you will see the details of the tracker created for you. 
+
+
+Click the **Finish** button.
+
+
+![alt text](workshop-images/6b.png) 
 
   ----------------------------------------------------------------- ------------------------------------------------------------------------------------
   Your dashboard should now reflect your event tracker is active.   ![alt text](workshop-images/6c.png)
@@ -403,16 +399,12 @@ press the fetch pretrained.
 
 # 9. Create Campaign
 
-+-----------------------------------+-----------------------------------+
-| Once your solution creation is    | ![alt text](workshop-images/9a.png) |
-| active you are ready to create a  | 043482064741908in"                |
-| campaign so that your application | height="2.6229625984251967in"}    |
-| can get recommendations.          |                                   |
-|                                   |                                   |
-| In the personalize dashboard      |                                   |
-| click start next to campaign      |                                   |
-| creation                          |                                   |
-+-----------------------------------+-----------------------------------+
+Once your solution creation is active you are ready to create a campaign so that your application can get recommendations.
+
+In the personalize dashboard click start next to campaign creation. 
+
+![alt text](workshop-images/9a.png)
+
 
 In the create new campaign screen use **personalize-workshop-campaign**
 as the campaign name.
@@ -532,7 +524,6 @@ S3 policy for personalize in case automatic role creation fails
 }
 ```
 
-Attach [AmazonPersonalizeFullAccess](https://console.aws.amazon.com/iam/home?region=us-west-2#/policies/arn%3Aaws%3Aiam%3A%3Aaws%3Apolicy%2Fservice-role%2FAmazonPersonalizeFullAccess) policy
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Attach [AmazonPersonalizeFullAccess](https://console.aws.amazon.com/iam/home?region=us-west-2#/policies/arn%3Aaws%3Aiam%3A%3Aaws%3Apolicy%2Fservice-role%2FAmazonPersonalizeFullAccess) policy.
 
 ![alt text](workshop-images/11a.png)
