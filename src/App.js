@@ -25,7 +25,6 @@ import Papa from 'papaparse';
 import ListMovies from './components/ListMovies';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import axios from 'axios';
 
 Amplify.configure(aws_exports);
@@ -51,7 +50,6 @@ class App extends Component {
     }
     
     async  getRecommendations() { 
-      const recom = [];
         let apiName = 'personalize';
         let path = '/items/?userId=' + this.state.userId;
         let myInit = { // OPTIONAL
