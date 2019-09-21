@@ -400,6 +400,8 @@ press the fetch pretrained.
 
 ![alt text](workshop-images/8e.png)
 
+Stop the locally running app by pressing CTL+C.
+
 # 9. Create Campaign
 
 Once your solution creation is active you are ready to create a campaign so that your application can get recommendations.
@@ -456,6 +458,8 @@ personalize.
 
 ![alt text](workshop-images/9i.png)
 
+Save the file.
+
 We now need to deploy our amplify backend. In the Cloud9 terminal
 execute
 
@@ -473,6 +477,15 @@ Your lambda function will be connecting to the Personalize campaign.
 Once your Amplify backend has been deployed, you can get recommendations
 from your own campaign by entering a user ID and pressing the FETCH
 button. Results will appear on the right.
+
+Start your app again.
+
+```sh
+npm start
+```
+
+Once the build has completed, select Preview-\>Preview Running
+Application from the cloud9 top menu.
 
 ![alt text](workshop-images/9j.png)
 
