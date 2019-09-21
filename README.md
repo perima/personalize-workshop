@@ -429,7 +429,7 @@ You can check the campaign status by selecting the details tab.
 
 ![alt text](workshop-images/9d.png)
 
-You can start using it once the status shows as active. This step can
+Copy the Campaign ARN for use in the steps later. You can start using it once the status shows as active. This step can
 take five to ten minutes.
 
 Once the campaign shows as active, go back to the campaign homepage to
