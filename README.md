@@ -382,7 +382,7 @@ At the top right of your preview click the icon ![alt text](workshop-images/8dd.
 Once your new preview tab is open you can close the preview tab inside
 the cloud9 to have more space for your IDE.
 
-![alt text](workshop-images/8dd.png)
+![alt text](workshop-images/8g.png)
 
 ## 8.3 Test using the pre-deployed personalize campaign
 Whilst we wait for the training to complete we will test first using a
