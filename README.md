@@ -286,10 +286,7 @@ Set **personalize-workshop-tracker** as the tracker name and press
 
 ![alt text](workshop-images/6a.png)
 
-In the next page you will see the details of the tracker created for you. 
-
-
-Click the **Finish** button.
+In the next page you will see "Tracking ID" generated for you. We will do the rest of the SDK installation later so Click the **Finish** button.
 
 
 ![alt text](workshop-images/6b.png) 
@@ -329,7 +326,14 @@ Please note this step can take 30 to 45 minutes to complete. Proceed to next ste
 
 # 8 Test our campaign using the single page demo app 
 
+Go back to your Cloud9 environment.
+
 ## 8.1 Configure amplify project
+
+Please make sure you deploy in the same region as per the personalize
+solution, which is us-west-2 (Oregon). You can check the region of your Cloud9 environment by clicking on the "AWS Resources" tab on the right hand panel.
+
+![alt text](workshop-images/8f.png)
 
 Go to the root of your working directory (something like
 ~/environment/personalize-workshop) and execute
@@ -338,15 +342,14 @@ Go to the root of your working directory (something like
 amplify init
 ```
 
-Please make sure you deploy in the same region as per personalize
-solution.
-
 Amplify CLI will ask a few questions to initialize the project. Please
 use following answers
 
 Do you want to use an existing environment? (Y/n): No
 
-Enter a name for the environment workshop: pworkshop
+Enter a name for the environment: pworkshop
+
+Choose your default editor: scroll down to None
 
 Do you want to use an AWS profile? (Y/n): Yes (then select default)
 
@@ -379,6 +382,8 @@ At the top right of your preview click the icon ![alt text](workshop-images/8dd.
 Once your new preview tab is open you can close the preview tab inside
 the cloud9 to have more space for your IDE.
 
+![alt text](workshop-images/8g.png)
+
 ## 8.3 Test using the pre-deployed personalize campaign
 Whilst we wait for the training to complete we will test first using a
 campaign we deployed earlier using the same dataset.
@@ -394,6 +399,8 @@ the same dataset. You should see recommendations listed every time you
 press the fetch pretrained.
 
 ![alt text](workshop-images/8e.png)
+
+Stop the locally running app by pressing CTL+C.
 
 # 9. Create Campaign
 
@@ -424,7 +431,7 @@ You can check the campaign status by selecting the details tab.
 
 ![alt text](workshop-images/9d.png)
 
-You can start using it once the status shows as active. This step can
+Copy the Campaign ARN for use in the steps later. You can start using it once the status shows as active. This step can
 take five to ten minutes.
 
 Once the campaign shows as active, go back to the campaign homepage to
@@ -451,6 +458,8 @@ personalize.
 
 ![alt text](workshop-images/9i.png)
 
+Save the file.
+
 We now need to deploy our amplify backend. In the Cloud9 terminal
 execute
 
@@ -468,6 +477,15 @@ Your lambda function will be connecting to the Personalize campaign.
 Once your Amplify backend has been deployed, you can get recommendations
 from your own campaign by entering a user ID and pressing the FETCH
 button. Results will appear on the right.
+
+Start your app again.
+
+```sh
+npm start
+```
+
+Once the build has completed, select Preview-\>Preview Running
+Application from the cloud9 top menu.
 
 ![alt text](workshop-images/9j.png)
 
